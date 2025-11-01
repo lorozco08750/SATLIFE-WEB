@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Registra especies, ciclos, parámetros del agua y notas de mantenimiento con un historial visual.",
       placeholder: "Imagen no encontrada — coloca aquí tu vista de cultivos.",
+      imageSrc: "Gestio%CC%81n%20de%20cultivos%20y%20peces.jpeg",
       focusArea: "gestion",
       highlights: [
         "Historial visual de lotes y parámetros críticos.",
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Programación semanal, roles compartidos y alertas automáticas para asegurar tareas críticas.",
       placeholder: "Imagen no encontrada — agrega tu calendario colaborativo.",
+      imageSrc: "Asignacio%CC%81n%20de%20tareas%20inteligentes.jpg",
       focusArea: "gestion",
       highlights: [
         "Calendario sincronizado con recordatorios multicanal.",
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Visualiza el estado del ecosistema con lecturas de pH, temperatura y oxígeno contextualizadas.",
       placeholder: "Imagen no encontrada — integra tu panel de datos.",
+      imageSrc: "Panel%20de%20monitoreo%20de%20sensores.jpg",
       focusArea: "monitoreo",
       highlights: [
         "Alertas configurables según umbrales personalizados.",
@@ -71,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Centraliza guías, videos y experiencias para fortalecer el aprendizaje comunitario.",
       placeholder: "Imagen no encontrada — espacio para tu biblioteca visual.",
+      imageSrc: "Recursos%20educativos.jpg",
       focusArea: "educacion",
       highlights: [
         "Catálogo etiquetado por nivel de experiencia.",
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Foros, mensajería interna y tableros de anuncios conectan a cada integrante del proyecto.",
       placeholder: "Imagen no encontrada — integra tu tablero de mensajes.",
+      imageSrc: "Comunicacio%CC%81n%20comunitaria.jpg",
       focusArea: "comunidad",
       highlights: [
         "Canales temáticos y tableros visibles por toda la red.",
@@ -151,12 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
       .map((tag) => `<span class="badge text-bg-light text-secondary">${tag}</span>`)
       .join("");
 
+    const imageMarkup = module.imageSrc
+      ? `<figure class="module-image-wrapper mb-3">
+          <img class="module-image" src="img/${module.imageSrc}" alt="${module.title}" loading="lazy" />
+        </figure>`
+      : `<div class="media-placeholder image-placeholder mb-3">
+          <span>${module.placeholder}</span>
+        </div>`;
+
     return `
       <div class="col-md-6 col-xl-3">
         <article class="module-card h-100" data-focus="${module.focusArea}">
-          <div class="media-placeholder image-placeholder mb-3">
-            <span>${module.placeholder}</span>
-          </div>
+          ${imageMarkup}
           <h3 class="h5">${module.title}</h3>
           <p class="text-muted">${module.description}</p>
           ${highlightsList}
