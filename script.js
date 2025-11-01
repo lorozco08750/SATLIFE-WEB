@@ -35,6 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return `img/${fileName}`;
   };
 
+  const normalizeMediaSources = () => {
+    const videos = document.querySelectorAll("video.media-video");
+    videos.forEach((video) => {
+      const currentSrc = video.getAttribute("src");
+      if (currentSrc && currentSrc.includes(" ")) {
+        video.setAttribute("src", encodeURI(currentSrc));
+      }
+
+      video.querySelectorAll("source[src]").forEach((source) => {
+        const sourceSrc = source.getAttribute("src");
+        if (sourceSrc && sourceSrc.includes(" ")) {
+          source.setAttribute("src", encodeURI(sourceSrc));
+        }
+      });
+    });
+  };
+
+  normalizeMediaSources();
+
   const modulesData = [
     {
       id: "cultivos",
