@@ -22,6 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleNavbarBackground();
   window.addEventListener("scroll", toggleNavbarBackground);
 
+  // --- Helper: calcula la ruta correcta para las imágenes ---
+  // Si la página se sirve desde lorozco08750.github.io (GitHub Pages de proyecto)
+  // añadimos el prefijo /SATLIFE-WEB para que las rutas apunten a:
+  // https://lorozco08750.github.io/SATLIFE-WEB/img/...
+  const getImgPath = (fileName) => {
+    const isGithubUserPage = location.hostname === "lorozco08750.github.io";
+    if (isGithubUserPage) {
+      return `/SATLIFE-WEB/img/${fileName}`;
+    }
+    // caso local o servidor donde index.html esté en la raíz del repo
+    return `img/${fileName}`;
+  };
+
   const modulesData = [
     {
       id: "cultivos",
@@ -158,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const imageMarkup = module.imageSrc
       ? `<figure class="module-image-wrapper mb-3">
-          <img class="module-image" src="img/${module.imageSrc}" alt="${module.title}" loading="lazy" />
+          <img class="module-image" src="${getImgPath(module.imageSrc)}" alt="${module.title}" loading="lazy" />
         </figure>`
       : `<div class="media-placeholder image-placeholder mb-3">
           <span>${module.placeholder}</span>
