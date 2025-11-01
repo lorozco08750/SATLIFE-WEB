@@ -28,17 +28,40 @@ body {
 }
 
 .hero-section {
+  position: relative;
   padding: 10rem 0 6rem;
-  background: radial-gradient(circle at 10% 20%, rgba(38, 140, 118, 0.5), transparent 60%),
-    radial-gradient(circle at 80% 0%, rgba(27, 79, 114, 0.5), transparent 55%),
-    linear-gradient(135deg, rgba(15, 31, 43, 0.95), rgba(27, 79, 114, 0.75));
+  background: url("img/Satlife.gif") center center / cover fixed no-repeat;
   color: #fff;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(38, 140, 118, 0.5), transparent 60%),
+      radial-gradient(circle at 80% 0%, rgba(27, 79, 114, 0.5), transparent 55%),
+      linear-gradient(135deg, rgba(15, 31, 43, 0.9), rgba(27, 79, 114, 0.7));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-section .badge {
   background-color: rgba(255, 255, 255, 0.15) !important;
   color: #fff;
   letter-spacing: 0.08em;
+}
+
+.hero-section .media-placeholder {
+  background: rgba(15, 31, 43, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  backdrop-filter: blur(4px);
 }
 
 .btn-primary {
@@ -72,6 +95,14 @@ body {
 
 .media-placeholder span {
   opacity: 0.75;
+}
+
+.media-placeholder .media-video {
+  width: 100%;
+  display: block;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 12px 32px rgba(15, 31, 43, 0.18);
 }
 
 .media-placeholder.image-placeholder {
@@ -137,6 +168,77 @@ body {
   border: 1px solid rgba(27, 79, 114, 0.1);
 }
 
+.module-filter {
+  background: rgba(38, 140, 118, 0.08);
+  border: 1px solid rgba(38, 140, 118, 0.2);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.module-filter .form-select {
+  min-width: 12rem;
+}
+
+.stat-card {
+  background: rgba(15, 31, 43, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0;
+}
+
+.community-tips {
+  background: #fff;
+  border: 1px dashed rgba(38, 140, 118, 0.3);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 20px 45px rgba(15, 31, 43, 0.06);
+}
+
+.community-tips li + li {
+  margin-top: 0.5rem;
+}
+
+.community-tips li::before {
+  content: "•";
+  color: var(--satlife-primary);
+  font-weight: 600;
+  display: inline-block;
+  width: 1rem;
+}
+
+.form-feedback {
+  min-height: 1.5rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.form-feedback.success {
+  color: var(--satlife-primary);
+  opacity: 1;
+}
+
+.form-feedback.error {
+  color: #dc3545;
+  opacity: 1;
+}
+
 footer {
   background-color: var(--satlife-dark);
   color: rgba(255, 255, 255, 0.8);
@@ -160,6 +262,10 @@ footer {
   .media-placeholder {
     min-height: 200px;
   }
+
+  .module-filter {
+    padding: 0.9rem 1rem;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -174,5 +280,13 @@ footer {
 
   .navbar-brand {
     font-size: 1.25rem;
+  }
+
+  .module-filter .form-select {
+    min-width: 100%;
+  }
+
+  .stat-number {
+    font-size: 1.65rem;
   }
 }

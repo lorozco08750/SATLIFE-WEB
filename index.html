@@ -49,6 +49,9 @@
                 <a class="nav-link" href="#recursos">Recursos</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="mvp.html">MVP</a>
+              </li>
+              <li class="nav-item">
                 <a class="btn btn-outline-light ms-lg-3" href="#contacto">
                   Solicitar Demo
                 </a>
@@ -81,7 +84,9 @@
             </div>
             <div class="col-lg-6">
               <div class="media-placeholder video-placeholder">
-                <span>Video no encontrado — reemplaza este espacio con tu demo.</span>
+                <video class="media-video" src="video/Demo.mp4" controls autoplay muted loop playsinline>
+                  Tu navegador no puede reproducir el video demo.
+                </video>
               </div>
             </div>
           </div>
@@ -148,59 +153,71 @@
 
       <section id="modulos" class="py-5">
         <div class="container">
-          <div class="row justify-content-between align-items-center mb-5">
-            <div class="col-lg-6">
+          <div class="row justify-content-between align-items-start mb-4">
+            <div class="col-lg-7">
               <h2 class="fw-semibold mb-3">Módulos que conectan personas, datos y procesos</h2>
-              <p class="text-muted">
+              <p class="text-muted mb-0">
                 SATLIFE organiza la operación de cultivos acuapónicos en módulos que dialogan entre sí.
                 Cada uno brinda contexto, seguimiento y colaboración en tiempo real.
               </p>
             </div>
+            <div class="col-lg-5 col-xl-4">
+              <div class="module-filter">
+                <label class="form-label" for="moduleFilter">Filtrar por enfoque</label>
+                <select class="form-select form-select-sm" id="moduleFilter" aria-label="Filtrar módulos por enfoque">
+                  <option value="todos">Todos</option>
+                  <option value="gestion">Gestión operativa</option>
+                  <option value="monitoreo">Monitoreo y datos</option>
+                  <option value="comunidad">Comunidad</option>
+                  <option value="educacion">Educación</option>
+                </select>
+                <p class="small text-muted mb-0">
+                  Mostrando <span id="moduleCounter">0</span> módulos disponibles.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row g-4" id="modulesGrid" data-js="modules"></div>
+          <noscript>
+            <p class="text-muted mt-3">Activa JavaScript para explorar los módulos disponibles.</p>
+          </noscript>
+        </div>
+      </section>
+
+      <section id="indicadores" class="py-5 bg-dark text-light">
+        <div class="container">
+          <div class="row align-items-center mb-4">
+            <div class="col-lg-7">
+              <h2 class="fw-semibold mb-2">Indicadores vivos de la comunidad SATLIFE</h2>
+              <p class="text-light-emphasis mb-0">
+                Consolidamos métricas para visualizar el impacto de las iniciativas y priorizar nuevas acciones.
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <p class="small text-light-emphasis mb-0">
+                Etiquetas más activas:
+                <span class="text-white fw-semibold" id="tagSummary">Integración de datos</span>
+              </p>
+            </div>
           </div>
           <div class="row g-4">
-            <div class="col-md-6 col-xl-3">
-              <div class="module-card h-100">
-                <div class="media-placeholder image-placeholder mb-3">
-                  <span>Imagen no encontrada — coloca aquí tu vista de cultivos.</span>
-                </div>
-                <h3 class="h5">Gestión de cultivos y peces</h3>
-                <p class="text-muted">
-                  Registra especies, ciclos, parámetros del agua y notas de mantenimiento con un historial visual.
-                </p>
-              </div>
+            <div class="col-md-4">
+              <article class="stat-card h-100">
+                <h3 class="stat-number" id="statsCommunities">0</h3>
+                <p class="stat-label">Comunidades coordinadas</p>
+              </article>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="module-card h-100">
-                <div class="media-placeholder image-placeholder mb-3">
-                  <span>Imagen no encontrada — agrega tu calendario colaborativo.</span>
-                </div>
-                <h3 class="h5">Asignación de tareas</h3>
-                <p class="text-muted">
-                  Programación semanal, roles compartidos y alertas automáticas para asegurar tareas críticas.
-                </p>
-              </div>
+            <div class="col-md-4">
+              <article class="stat-card h-100">
+                <h3 class="stat-number" id="statsVolunteers">0</h3>
+                <p class="stat-label">Voluntarios activos</p>
+              </article>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="module-card h-100">
-                <div class="media-placeholder image-placeholder mb-3">
-                  <span>Imagen no encontrada — espacio para tu biblioteca visual.</span>
-                </div>
-                <h3 class="h5">Recursos educativos</h3>
-                <p class="text-muted">
-                  Centraliza guías, videos y experiencias para fortalecer el aprendizaje comunitario.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="module-card h-100">
-                <div class="media-placeholder image-placeholder mb-3">
-                  <span>Imagen no encontrada — integra tu tablero de mensajes.</span>
-                </div>
-                <h3 class="h5">Comunicación comunitaria</h3>
-                <p class="text-muted">
-                  Foros, mensajería interna y tableros de anuncios conectan a cada integrante del proyecto.
-                </p>
-              </div>
+            <div class="col-md-4">
+              <article class="stat-card h-100">
+                <h3 class="stat-number" id="statsLearningHours">0</h3>
+                <p class="stat-label">Horas de aprendizaje compartidas</p>
+              </article>
             </div>
           </div>
         </div>
@@ -224,7 +241,9 @@
             </div>
             <div class="col-lg-6">
               <div class="media-placeholder image-placeholder light">
-                <span>Imagen no encontrada — inserta aquí tu mockup del panel.</span>
+                <video class="media-video" src="video/Mockup.mp4" controls autoplay muted loop playsinline>
+                  Tu navegador no puede reproducir el video del mockup.
+                </video>
               </div>
             </div>
           </div>
@@ -277,6 +296,20 @@
               </div>
             </div>
           </div>
+          <div class="row g-4 mt-2">
+            <div class="col-lg-6">
+              <aside class="community-tips h-100">
+                <h3 class="h6 text-uppercase text-muted mb-3">Acciones inmediatas para tu red</h3>
+                <ul class="list-unstyled mb-0" id="tipList" aria-live="polite"></ul>
+              </aside>
+            </div>
+            <div class="col-lg-6">
+              <div class="community-tips h-100">
+                <h3 class="h6 text-uppercase text-muted mb-3">Historias destacadas</h3>
+                <ul class="list-unstyled mb-0" id="storyList" aria-live="polite"></ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -285,7 +318,9 @@
           <div class="row align-items-center g-5">
             <div class="col-lg-6">
               <div class="media-placeholder video-placeholder">
-                <span>Video no encontrado — inserta tu tutorial de cultivo.</span>
+                <video class="media-video" src="video/Tutorial de cultivos.mp4" controls autoplay muted loop playsinline>
+                  Tu navegador no puede reproducir el tutorial de cultivos.
+                </video>
               </div>
             </div>
             <div class="col-lg-6">
@@ -293,40 +328,10 @@
               <p class="text-muted">
                 Comparte material educativo, instructivos y experiencias para fortalecer la red de conocimiento.
               </p>
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <div class="resource-card">
-                    <h4 class="h6">Guías descargables</h4>
-                    <p class="small text-muted mb-0">
-                      Subirás manuales técnicos y fichas de especies.
-                    </p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="resource-card">
-                    <h4 class="h6">Historias de impacto</h4>
-                    <p class="small text-muted mb-0">
-                      Espacio para testimonios y buenas prácticas comunitarias.
-                    </p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="resource-card">
-                    <h4 class="h6">Cursos y talleres</h4>
-                    <p class="small text-muted mb-0">
-                      Publica agendas, enlaces y materiales complementarios.
-                    </p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="resource-card">
-                    <h4 class="h6">Centro de ayuda</h4>
-                    <p class="small text-muted mb-0">
-                      Documenta procedimientos paso a paso y preguntas frecuentes.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <div class="row g-3" id="resourceList" data-js="resources"></div>
+              <noscript>
+                <p class="text-muted mt-3 mb-0">Activa JavaScript para ver la biblioteca de recursos.</p>
+              </noscript>
             </div>
           </div>
         </div>
@@ -397,6 +402,7 @@
                 <button class="btn btn-primary w-100 mt-4" type="submit">
                   Enviar solicitud
                 </button>
+                <p class="form-feedback small mt-3" id="formFeedback" aria-live="polite"></p>
               </form>
             </div>
           </div>
